@@ -162,17 +162,7 @@ are preserved in their file headers.
 
 ---
 
-## 4. Personal photos in `assets/webcamjs/`
-
-The files `assets/webcamjs/luke.jpg` and `assets/webcamjs/luke2.jpg`
-are personal images (not part of the upstream `webcamjs` package). They
-are placeholders intended for the file-upload feature. A separate
-remediation step will either strip EXIF metadata from these images or
-replace them with stock photos.
-
----
-
-## 5. End-of-life plug-in runtimes
+## 4. End-of-life plug-in runtimes
 
 The files `Moxie.swf`, `Moxie.xap`, and `flashExport.swf` (Adobe Flash
 and Microsoft Silverlight runtime binaries vendored as `plupload`
