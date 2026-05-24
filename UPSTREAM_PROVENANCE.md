@@ -1,70 +1,125 @@
-# Upstream provenance -- unresolved question
+# Upstream provenance -- CONFIRMED Skote admin template
 
-This document records an unresolved licensing question about the
-origin of this CDN bundle. It is a flag for the Virtual Pharmacist Ltd
-commercial / legal track and does not itself answer the question.
+This document records the identified upstream origin of the assets in
+this CDN bundle and the licensing questions that follow from that
+identification. It is a flag for the Virtual Pharmacist Ltd commercial
+and legal tracks.
 
-## Background
+## Identified upstream
 
-An internal third-party-library inventory identified the overall
-structure and stylesheet patterns of the assets in this repository as
-consistent with a commercial admin-dashboard theme sold through
-ThemeForest. Candidate upstream families surfaced by the fingerprint
-match include (in alphabetical order):
+The assets in this repository are derived from the **Skote -- Bootstrap
+4 Admin & Dashboard Template** by **Themesbrand** (sold on ThemeForest,
+item ID 24863098).
 
-- Hyper (HyperUI / Coderthemes Hyper)
-- Skote (Themesbrand Skote)
-- Velzon (Themesbrand Velzon)
+Confirmation evidence:
 
-Each of these themes is sold under an Envato Regular Licence by default.
-The Regular Licence permits use in a single end product where end users
-are not charged for access, and explicitly does not cover:
+- **Bundled JavaScript stack**: Bootstrap 4.5.0 + metismenu (collapsible
+  sidebar) + simplebar (custom scrollbar) + node-waves (Material Design
+  button ripple effects) + toastr + sweetalert2 -- this exact combination
+  is the Skote signature stack.
+- **CSS class names in `assets/user/css/app.min.css`** (Skote-specific,
+  not generic Bootstrap): `page-topbar`, `navbar-brand-box`,
+  `vertical-menu`, `logo-light` / `logo-dark`, `app-search`,
+  `simplebar-content`, `main-content`.
+- **Skote brand colour palette** present in `app.min.css`: `#505d69`
+  (navbar text), `#74788d` (secondary text), `#f1f5f7` (light
+  background).
+- **Asset filename conventions** under `assets/user/images/` match
+  Skote's distribution: `authentication-bg.jpg`, `comingsoon-bg.jpg`,
+  `error-img.png`, `maintenance-bg.png`, `megamenu-img.png`, and the
+  `logo-light` / `logo-dark` / `logo-sm-light` / `logo-sm-dark`
+  multi-variant logo set.
 
-- Multi-tenant SaaS where access is gated behind a subscription
-- Distribution of the theme files as a separable component (which a
-  public CDN is)
-- Transfer of the theme licence to a third party (such as a corporate
-  acquirer)
+The same fingerprint set would not match Velzon (also Themesbrand, but
+built on Bootstrap 5, with different sidebar and scrollbar libraries)
+or Hyper (Coderthemes, different sidebar library).
 
-Envato sells an **Extended Licence** which expands the permitted use
-to multi-end-user SaaS, but transfer to an acquirer still requires
-written permission from the original author or Envato.
+## Licensing situation
+
+Skote is sold under standard Envato licensing. Two tiers exist:
+
+- **Regular Licence** (current price ~24 USD): permits use in a single
+  end product where end users are **not charged**. Does NOT cover
+  multi-tenant SaaS where users pay for access.
+- **Extended Licence** (current price ~995 USD): permits use in a single
+  end product where end users **can be charged**. Covers multi-tenant
+  SaaS.
+
+In addition, Envato licences are **non-transferable to acquirers** by
+default. A sale or material change of control to a third party (for
+example, a corporate acquisition by IQVIA) requires written consent
+from Themesbrand or from Envato.
+
+Virtual Pharmacist is a paid multi-tenant SaaS used by pharmacists and
+practice clinicians, so the **Extended Licence is the applicable tier**
+for the current usage. The current operating state is unverified -- it
+is not yet known whether the original purchase was a Regular or
+Extended Licence.
 
 ## Why this matters
 
-Any third-party SCA / commercial-licensing review will fingerprint the
-bundle's structure against well-known commercial templates. If the
-bundle matches a known ThemeForest theme, the reviewer will flag it and
-will request:
+Any third-party SCA / commercial-licensing review will fingerprint this
+bundle against ThemeForest commercial templates and identify Skote.
+The reviewer will then request:
 
-1. Evidence of the original purchase
-2. Evidence that the licence in use covers multi-tenant SaaS hosting
+1. Evidence of the original purchase (Envato invoice with order
+   number).
+2. Evidence that the licence in use is Extended (covers multi-tenant
+   SaaS).
 3. Evidence that the licence can transfer to any acquirer in a sale
-   or material change of control
+   or material change of control.
 
 If those three pieces of evidence cannot be produced, the reviewer will
-treat the theme as a commercial-licensing blocker.
+treat the Skote dependency as a commercial-licensing blocker.
 
 ## Action required (legal / commercial track)
 
 This question is NOT something the engineering team can resolve. It
-requires:
+requires the following steps, in order:
 
-1. The original commercial-template purchase receipt (Envato invoice
-   or upstream vendor invoice) -- if one exists.
-2. A licence-of-record check (Regular vs Extended on Envato).
-3. Confirmation in writing from Envato or the upstream vendor that
-   the licence in use covers multi-tenant SaaS CDN hosting and
-   transfers in the event of a sale.
+1. **Locate the original Envato / ThemeForest purchase receipt** for
+   the Skote template. Search:
+   - Email archives for "themeforest", "envato", "Skote", "Themesbrand"
+   - Accounting records for ThemeForest or Envato transactions
+   - The ThemeForest account "Downloads" page (login + downloads
+     section shows historical purchases with licence tier)
+2. **Confirm which licence tier was purchased**. ThemeForest stamps the
+   licence tier on the invoice and on the download page.
+3. **If a Regular Licence was purchased**: upgrade to an Extended
+   Licence through ThemeForest. Themesbrand support also handles
+   upgrades.
+4. **For the IQVIA sale**: request written permission from Themesbrand
+   (or Envato Support) for the Skote licence to transfer in a corporate
+   acquisition. State the acquirer's name and intended use.
 
-If the licence cannot be confirmed to cover this product's usage and
-sale, the practical paths forward are (engineering-led, but only after
-a legal decision):
+If the licence cannot be confirmed and upgraded, the practical paths
+forward are (engineering-led, but only after a legal decision):
 
-- Replace the theme with one whose licence does cover this usage (for
-  example, a permissively-licensed open-source admin theme, or an
-  internally-built CSS).
-- Negotiate an Extended Licence plus a transfer addendum with the
-  upstream vendor.
+- Negotiate an Extended Licence plus a transfer addendum with
+  Themesbrand or Envato.
+- Replace Skote with a theme whose licence does cover this usage --
+  for example, an MIT-licensed open-source admin theme such as Tabler,
+  CoreUI Free, or an internally-built CSS layer on Bootstrap 5.
 
-Either path is a multi-week project; both are tracked internally.
+Both paths are tracked internally as multi-week projects.
+
+## What about the OSS libraries Skote bundles
+
+Skote distributes a curated set of permissively-licensed third-party
+libraries (jQuery, Bootstrap, fullcalendar, etc.). Those have their
+own licences which are documented separately in `NOTICE.md`. The
+licence question covered by this document is specifically about the
+**Skote template itself** (the layout, the CSS, the asset bundle, the
+page templates) -- not the OSS dependencies it ships with.
+
+## Theme replacement options if needed (engineering reference)
+
+Permissively-licensed alternatives that are commonly used as
+SaaS-suitable replacements for Skote-style admin templates:
+
+| Replacement | Licence | Pros | Cons |
+|-------------|---------|------|------|
+| Tabler | MIT | Active development, modern Bootstrap 5, good docs | Different layout patterns; requires re-skin |
+| CoreUI Free | MIT | Long-standing, multiple framework variants | Free version is limited; pro version is Envato-class |
+| AdminLTE 3+ | MIT | Mature, widely supported | Older visual style |
+| Internal CSS on Bootstrap 5 | n/a | Maximum control, no third-party risk | Larger engineering investment |
