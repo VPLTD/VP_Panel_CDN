@@ -39,22 +39,27 @@ licence.
 
 Virtual Pharmacist Ltd has not modified the upstream TinyMCE source.
 
-### 1.2 `plupload` -- LICENCE STATUS PENDING VERIFICATION
+### 1.2 `plupload` v2.1.2 -- GPL-licensed, replacement tracked
 
-- Detected files: 55 across `assets/libs/plupload/`
-- Detected version: not visible from the banner (changelog inspection
-  required); the file banner cites 2009 / 2013 Moxiecode dates
-- Licence per third-party fingerprint databases: **AGPL-3.0 / Commercial
-  dual** (2.x onwards)
+- Detected version: **2.1.2** (per the version banner inside
+  `assets/libs/plupload/plupload.dev.js`: `"Plupload - multi-runtime
+  File Uploader / v2.1.2 / Copyright 2013, Moxiecode Systems AB /
+  Released under GPL License"`). The bundled `moxie.js` runtime is
+  v1.2.1, also "Released under GPL License" per its banner.
+- Licence: **GPL** as declared by the upstream banner. The
+  plupload.com licence page documents this as dual GPL / Commercial
+  (commercial requires a paid Moxiecode / Tiny licence).
+- Use within this product: file-upload UI on certain admin pages
+  (referenced from chunk_uploader.js). The plupload runtime currently
+  falls back to HTML5 in all modern browsers because the Flash and
+  Silverlight runtime URLs in chunk_uploader.js point to paths that
+  no longer exist (see section 4 below).
 
-The plupload component requires version verification before it can be
-relied on in a commercial-distributed product. If the in-tree version
-is post-2.x and AGPL-3.0 applies, this is a network-copyleft licence
-that would obligate source disclosure of the entire system that loads
-the script. A replacement is tracked internally.
-
-Until verification completes, this notice does not constitute an
-election or acceptance of AGPL terms.
+This is a deal-relevant licence finding for a proprietary
+multi-tenant SaaS. A replacement is tracked internally as an
+engineering project. Until then, this notice does not constitute an
+election or acceptance of GPL terms; the file-upload paths that load
+plupload are documented for the planned migration.
 
 ### 1.3 `jszip` -- MIT election
 
@@ -162,13 +167,29 @@ are preserved in their file headers.
 
 ---
 
-## 4. End-of-life plug-in runtimes
+## 4. Removed: end-of-life plug-in runtimes and historical archives
 
-The files `Moxie.swf`, `Moxie.xap`, and `flashExport.swf` (Adobe Flash
-and Microsoft Silverlight runtime binaries vendored as `plupload`
-fallback uploaders) are end-of-life browser plug-in technologies. They
-no longer execute in any current browser. Their removal is tracked
-internally.
+The bundle previously included the following files which have now been
+removed. They were end-of-life Adobe Flash / Microsoft Silverlight
+runtime binaries (no current browser loads either format) or
+historical NuGet packaging archives that were never served from the
+CDN.
 
-This notice does not attempt licence attribution for these files, on
-the basis that they are dead code awaiting removal.
+Removed Flash / Silverlight binaries:
+
+- `assets/libs/plupload/Moxie.swf` (plupload Flash runtime)
+- `assets/libs/plupload/Moxie.xap` (plupload Silverlight runtime)
+- `assets/libs/datatables.net-buttons/swf/flashExport.swf` (DataTables Flash exporter)
+- `assets/user/libs/datatables.net-buttons/swf/flashExport.swf` (mirror of the above)
+- `assets/webcamjs/webcam.swf` (webcamjs Flash fallback)
+
+Removed historical archives:
+
+- `assets/libs/plupload.zip` (plupload 2.x source distribution archive)
+- `assets/libs/toastr/nuget/` (43 historical toastr NuGet packages, versions 1.0.0 through 2.0.3)
+- `assets/user/libs/toastr/nuget/` (mirror of the above)
+
+Plupload, DataTables Buttons and webcamjs are still loaded from this
+bundle; each one falls back to HTML5 implementations in current
+browsers, so removing the legacy plug-in binaries does not change
+runtime behaviour.
