@@ -1,0 +1,17 @@
+# CODEOWNERS -- VP_Panel_CDN
+#
+# At least one listed owner must approve before a PR can be merged.
+
+# Default: all files
+*  @LBillyard @ydharia
+
+# Compliance and provenance documents: Luke must review any change
+NOTICE.md                @LBillyard
+UPSTREAM_PROVENANCE.md   @LBillyard
+SECURITY.md              @LBillyard
+.github/SECURITY.md      @LBillyard
+CODEOWNERS               @LBillyard
+LICENSE                  @LBillyard
+
+# Plupload (GPL item): both must review any changes
+assets/libs/plupload/    @LBillyard @ydharia

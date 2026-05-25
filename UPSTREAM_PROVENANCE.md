@@ -46,9 +46,8 @@ Skote is sold under standard Envato licensing. Two tiers exist:
   SaaS.
 
 In addition, Envato licences are **non-transferable to acquirers** by
-default. A sale or material change of control to a third party (for
-example, a corporate acquisition by IQVIA) requires written consent
-from Themesbrand or from Envato.
+default. A sale or material change of control to a third party requires written
+consent from Themesbrand or from Envato.
 
 Virtual Pharmacist is a paid multi-tenant SaaS used by pharmacists and
 practice clinicians, so the **Extended Licence is the applicable tier**
@@ -88,9 +87,9 @@ requires the following steps, in order:
 3. **If a Regular Licence was purchased**: upgrade to an Extended
    Licence through ThemeForest. Themesbrand support also handles
    upgrades.
-4. **For the IQVIA sale**: request written permission from Themesbrand
-   (or Envato Support) for the Skote licence to transfer in a corporate
-   acquisition. State the acquirer's name and intended use.
+4. **For any change of control or acquisition**: request written
+   permission from Themesbrand (or Envato Support) for the Skote
+   licence to transfer. State the acquirer's name and intended use.
 
 If the licence cannot be confirmed and upgraded, the practical paths
 forward are (engineering-led, but only after a legal decision):
